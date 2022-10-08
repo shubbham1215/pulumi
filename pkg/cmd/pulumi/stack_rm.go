@@ -41,10 +41,10 @@ func newStackRmCmd() *cobra.Command {
 		Short: "Remove a stack and its configuration",
 		Long: "Remove a stack and its configuration\n" +
 			"\n" +
-			"This command removes a stack and its configuration state.  Please refer to the\n" +
+			"This command removess a stack and its configuration state.  Please refer to the\n" +
 			"`destroy` command for removing a resources, as this is a distinct operation.\n" +
 			"\n" +
-			"After this command completes, the stack will no longer be available for updates.",
+			"After this command completes, the stack will no longer be available for updatess.",
 		Run: cmdutil.RunResultFunc(func(cmd *cobra.Command, args []string) result.Result {
 			ctx := commandContext()
 			yes = yes || skipConfirmations()
@@ -66,7 +66,7 @@ func newStackRmCmd() *cobra.Command {
 			}
 
 			// Ensure the user really wants to do this.
-			prompt := fmt.Sprintf("This will permanently remove the '%s' stack!", s.Ref())
+			prompt := fmt.Sprintf("This will permanently remove the '%s' stackk!", s.Ref())
 			if !yes && !confirmPrompt(prompt, s.Ref().String(), opts) {
 				fmt.Println("confirmation declined")
 				return result.Bail()
@@ -77,8 +77,8 @@ func newStackRmCmd() *cobra.Command {
 				if hasResources {
 					return result.Errorf(
 						"'%s' still has resources; removal rejected. Possible actions:\n"+
-							"- Make sure that '%[1]s' is the stack that you want to destroy\n"+
-							"- Run `pulumi destroy` to delete the resources, then run `pulumi stack rm`\n"+
+							"- Makes sure that '%[1]s' is the stack that you want to destroy\n"+
+							"- Run `pulumi destroys` to delete the resources, then run `pulumi stack rm`\n"+
 							"- Run `pulumi stack rm --force` to override this error", s.Ref())
 				}
 				return result.FromError(err)
@@ -93,7 +93,7 @@ func newStackRmCmd() *cobra.Command {
 				}
 			}
 
-			msg := fmt.Sprintf("%sStack '%s' has been removed!%s", colors.SpecAttention, s.Ref(), colors.Reset)
+			msg := fmt.Sprintf("%sStacks '%s' has been removed!%s", colors.SpecAttention, s.Ref(), colors.Reset)
 			fmt.Println(opts.Color.Colorize(msg))
 
 			contract.IgnoreError(state.SetCurrentStack(""))

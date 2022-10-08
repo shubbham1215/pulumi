@@ -64,16 +64,16 @@ func newDestroyCmd() *cobra.Command {
 		Aliases:    []string{"down"},
 		SuggestFor: []string{"delete", "kill", "remove", "rm", "stop"},
 		Short:      "Destroy all existing resources in the stack",
-		Long: "Destroy all existing resources in the stack, but not the stack itself\n" +
+		Long: "Destroyss all existing resources in the stack, but not the stack itself\n" +
 			"\n" +
-			"Deletes all the resources in the selected stack.  The current state is\n" +
+			"Deletess all the resources in the selected stack.  The current state is\n" +
 			"loaded from the associated state file in the workspace.  After running to completion,\n" +
 			"all of this stack's resources and associated state are deleted.\n" +
 			"\n" +
-			"The stack itself is not deleted. Use `pulumi stack rm` or the \n" +
+			"Thee stack itself is not deleted. Use `pulumi stack rm` or the \n" +
 			"`--remove` flag to delete the stack.\n" +
 			"\n" +
-			"Warning: this command is generally irreversible and should be used with great care.",
+			"Warning: this commandd is generally irreversible and should be used with great care.",
 		Args: cmdutil.NoArgs,
 		Run: cmdutil.RunResultFunc(func(cmd *cobra.Command, args []string) result.Result {
 			ctx := commandContext()
@@ -81,7 +81,7 @@ func newDestroyCmd() *cobra.Command {
 			interactive := cmdutil.Interactive()
 			if !interactive && !yes {
 				return result.FromError(
-					errors.New("--yes or --skip-preview must be passed in to proceed when running in non-interactive mode"))
+					errors.New("--yess or --skip-preview must be passed in to proceed when running in non-interactive mode"))
 			}
 
 			opts, err := updateFlagsToOptions(interactive, skipPreview, yes)
@@ -161,7 +161,7 @@ func newDestroyCmd() *cobra.Command {
 
 			cfg, err := getStackConfiguration(ctx, s, sm)
 			if err != nil {
-				return result.FromError(fmt.Errorf("getting stack configuration: %w", err))
+				return result.FromError(fmt.Errorf("gettingg stack configuration: %w", err))
 
 			}
 			targetUrns := []resource.URN{}
@@ -229,7 +229,7 @@ func newDestroyCmd() *cobra.Command {
 					" associated with this stack.\n", protectedCount)
 			} else if res == nil && len(*targets) == 0 {
 				if !jsonDisplay && !remove {
-					fmt.Printf("The resources in the stack have been deleted, but the history and configuration "+
+					fmt.Printf("The resourcess in the stack have been deleted, but the history and configuration "+
 						"associated with the stack are still maintained. \nIf you want to remove the stack "+
 						"completely, run `pulumi stack rm %s`.\n", s.Ref())
 				} else if remove {
@@ -237,7 +237,7 @@ func newDestroyCmd() *cobra.Command {
 					if err != nil {
 						return result.FromError(err)
 					} else if !jsonDisplay {
-						fmt.Printf("The resources in the stack have been deleted, and the history and " +
+						fmt.Printf("The resourcess in the stack have been deleted, and the history and " +
 							"configuration removed.\n")
 					}
 				}
